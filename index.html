@@ -4,94 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Yogahof Aspelare | Yoga & Serre</title>
+    <title>Yogahof Aspelare | Wortelen onder Glas</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:italic&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .font-serif { font-family: 'DM Serif Display', serif; font-style: italic; }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@200;300;400&display=swap');
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        :root {
+            --sage: #707A65;
+            --earth: #1F241D;
+            --sand: #F9F8F4;
         }
-        .fade-in { animation: fadeIn 1s ease-out forwards; }
-        .grayscale-hover:hover { filter: grayscale(0); transition: filter 0.5s ease; }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--sand);
+            color: var(--earth);
+        }
+
+        .serif { 
+            font-family: 'Cormorant Garamond', serif; 
+        }
+
+        .fade-in {
+            animation: fadeIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .glass-nav {
+            background: rgba(249, 248, 244, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        
+        .line-draw::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: var(--earth);
+            transition: width .3s;
+        }
+        .line-draw:hover::after { width: 100%; }
     </style>
 </head>
-<body class="bg-[#F6F6F2] text-[#1A2E1A] antialiased text-sm md:text-base">
+<body class="antialiased">
 
-    <nav class="p-6 md:p-8 flex justify-between items-center max-w-7xl mx-auto border-b border-gray-100 bg-[#F6F6F2]/90 sticky top-0 z-50 backdrop-blur-sm">
-        <h1 class="text-2xl font-bold tracking-tighter uppercase text-[#0E200E]">Yogahof</h1>
-        <div class="space-x-6 md:space-x-8 text-xs uppercase tracking-widest font-medium text-gray-700">
-            <a href="#serre" class="hover:text-[#1A2E1A] hover:underline transition">De Serre</a>
-            <a href="#lessen" class="hover:text-[#1A2E1A] hover:underline transition">Lessen</a>
-            <a href="#contact" class="hover:text-[#1A2E1A] hover:underline transition">Contact</a>
+    <nav class="p-6 md:px-12 flex justify-between items-center max-w-full sticky top-0 z-50 glass-nav">
+        <h1 class="serif text-2xl italic tracking-wide">Yogahof</h1>
+        <div class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.2em] font-light">
+            <a href="#serre" class="line-draw">De Serre</a>
+            <a href="#lessen" class="line-draw">Lessen</a>
+            <a href="#contact" class="line-draw">Contact</a>
         </div>
+        <button class="md:hidden text-2xl">≡</button>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 md:px-8 py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="fade-in">
-                <span class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-4 block font-medium">Aspelare, Oost-Vlaanderen</span>
-                <h2 class="text-5xl md:text-6xl lg:text-8xl font-light leading-none mb-8 tracking-tight text-[#0E200E]">
-                    Yoga in de <br><span class="font-serif text-[#2B4C2B]">volle grond.</span>
+    <header class="relative min-h-[90vh] flex items-center px-6 md:px-12 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 z-10 fade-in">
+                <span class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-6 block">Stilte in Aspelare</span>
+                <h2 class="serif text-6xl md:text-8xl lg:text-9xl font-light leading-[0.9] mb-8">
+                    Ruimte om te <br>
+                    <span class="italic text-[#707A65]">wortelen.</span>
                 </h2>
-                <p class="text-xl max-w-md leading-relaxed text-gray-700 mb-10 text-balance">
-                    Vergeet de stad. Hier adem je de geur van natte aarde, zie je de seizoenen groeien en vind je rust onder het glas van Marnix' kweekserre.
+                <p class="text-lg md:text-xl font-light max-w-lg leading-relaxed text-gray-600 mb-12 italic">
+                    In de kweekserre van Marnix vervaagt de grens tussen de mat en de natuur. Geen klinische studio, maar yoga in de volle grond, tussen de stekjes en het ritme van de seizoenen.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#lessen" class="bg-[#1A2E1A] text-white px-10 py-5 inline-block text-sm uppercase tracking-widest font-semibold hover:bg-green-950 transition rounded-sm text-center">Boek een mat</a>
-                    <a href="#serre" class="bg-white text-[#1A2E1A] border border-gray-200 px-10 py-5 inline-block text-sm uppercase tracking-widest font-semibold hover:bg-gray-50 transition rounded-sm text-center">Onze Filosofie</a>
+                <div class="flex flex-col sm:flex-row gap-8 items-center">
+                    <a href="#lessen" class="bg-[#1F241D] text-white px-12 py-5 text-xs uppercase tracking-widest hover:bg-[#343d31] transition-all duration-500 w-full sm:w-auto text-center">
+                        Vind je plek
+                    </a>
+                    <a href="#serre" class="text-xs uppercase tracking-widest border-b border-gray-300 pb-2 hover:border-[#1F241D] transition-colors">
+                        Ontdek de Kas
+                    </a>
                 </div>
             </div>
-            <div class="relative group fade-in" style="animation-delay: 0.2s;">
-                <div class="aspect-[4/5] bg-gray-200 shadow-xl overflow-hidden rounded-sm transform group-hover:scale-[1.01] transition duration-500 grayscale grayscale-hover">
-                    <img src="image_0.jpg" alt="Marnix van Yogahof" class="object-cover object-left w-full h-full">
+
+            <div class="lg:col-span-5 relative fade-in" style="animation-delay: 0.4s;">
+                <div class="aspect-[3/4] overflow-hidden rounded-t-full border-[12px] border-white shadow-sm">
+                    <img src="image_0.jpg" alt="Yoga in de serre" class="object-cover w-full h-full hover:scale-105 transition-transform duration-[3s]">
                 </div>
-                <div class="absolute -bottom-8 -left-8 bg-white p-6 shadow-2xl rounded-sm hidden md:block border border-gray-100 transform rotate-[-2deg]">
-                    <p class="text-sm font-medium text-[#1A2E1A]">"Tussen de stekjes vind je de <br>meeste focus."</p>
-                    <p class="text-xs text-gray-500 mt-1">— Marnix, oprichter Yogahof</p>
+                <div class="absolute -bottom-6 -right-4 bg-white/40 backdrop-blur-md p-8 max-w-xs border border-white/20">
+                    <p class="serif italic text-xl text-[#1F241D]">"Planten forceren werkt niet. Mensen forceren ook niet."</p>
+                    <p class="text-[10px] uppercase tracking-widest mt-4 text-gray-500">— Marnix</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="serre" class="bg-[#1A2E1A] text-[#F6F6F2] py-28 md:py-32 mt-16">
-        <div class="max-w-6xl mx-auto px-6 md:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
-                <div class="fade-in">
-                    <h3 class="text-4xl md:text-5xl font-light mb-8 tracking-tight text-white">Kweken, Verstillen, Gronden</h3>
-                    <p class="text-lg leading-relaxed text-green-100/80 mb-6">
-                        Yogahof is ontstaan uit twee passies: de rust van yoga en de eerlijkheid van de moestuin. Marnix steekt al decennia zijn handen in de aarde van deze serre. Hij weet dat groei tijd nodig heeft, of het nu een tomatenplant is of je eigen geest.
-                    </p>
-                    <p class="text-base text-green-200/60 italic border-l-2 border-green-700 pl-4">
-                        "We gebruiken geen chemicaliën in de tuin, en geen pretentie op de mat. Wat je ziet is wat je krijgt."
-                    </p>
+    <section id="serre" class="py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h3 class="serif text-4xl md:text-5xl italic mb-12">De Symbiose</h3>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="space-y-4">
+                    <div class="h-px bg-gray-200 w-12 mx-auto mb-6"></div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold">Ademen</h4>
+                    <p class="text-sm leading-relaxed text-gray-500 font-light">De zuurstof van de planten, de focus van de ademhaling. In de serre adem je de natuur letterlijk in.</p>
                 </div>
-                <div class="relative fade-in" style="animation-delay: 0.2s;">
-                    <div class="aspect-video bg-green-950 overflow-hidden rounded-sm shadow-2xl grayscale grayscale-hover">
-                        <img src="image_1.jpg" alt="Tuin Yogahof" class="object-cover w-full h-full scale-110">
-                    </div>
+                <div class="space-y-4">
+                    <div class="h-px bg-gray-200 w-12 mx-auto mb-6"></div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold">Gronden</h4>
+                    <p class="text-sm leading-relaxed text-gray-500 font-light">Geen laminaat, maar de eerlijkheid van de volle grond onder je mat. De meest pure vorm van aarding.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="h-px bg-gray-200 w-12 mx-auto mb-6"></div>
+                    <h4 class="text-xs uppercase tracking-widest font-bold">Groeien</h4>
+                    <p class="text-sm leading-relaxed text-gray-500 font-light">Geduld is de sleutel. In de tuin én in het lichaam. We respecteren elk groeiproces, hoe traag ook.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="bg-green-950/50 p-8 rounded-sm border border-green-800/50 relative overflow-hidden group">
-                    <img src="image_4.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition" alt="Studio details">
-                    <div class="relative z-10">
-                        <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-white border-b border-green-800 pb-2">De Kas</h4>
-                        <p class="text-sm leading-loose text-green-200/80">Onze actieve kweekserre is de studio. Yoga tussen seizoensgroenten en stekjes. Geaard en dicht bij de bron.</p>
-                    </div>
+    <footer class="bg-[#1F241D] text-[#F9F8F4]/60 py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center border-t border-gray-800 pt-12">
+            <div class="mb-8 md:mb-0">
+                <h2 class="serif text-3xl italic text-white mb-2">Yogahof</h2>
+                <p class="text-xs tracking-widest font-light">Aspelare • Tussen glas en groen</p>
+            </div>
+            <div class="text-right">
+                <p class="text-xs mb-4">Volg onze groei op Instagram</p>
+                <div class="flex space-x-6 justify-end italic serif text-lg text-white">
+                    <a href="#" class="hover:opacity-60 transition">@yogahof_aspelare</a>
                 </div>
-                <div class="bg-green-950/50 p-8 rounded-sm border border-green-800/50 relative overflow-hidden group">
-                    <img src="image_5.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition" alt="Sfeerbeeld">
-                    <div class="relative z-10">
-                        <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-white border-b border-green-800 pb-2">Natuurlijke Zorg</h4>
-                        <p class="text-sm leading-loose text-green-200/80">Dezelfde aandacht die Marnix aan zijn planten geeft, passen we toe op de mat. We respecteren de eigen groei.</p>
-                    </div>
-                </div>
-                <div class="bg-green-950/50 p-8 rounded-sm border border-green-800/50 relative overflow-hidden group">
-                    <img src="image_3.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition" alt="Bamboe">
-                    <div class="relative z-10">
-                        <h4 class="font-bold mb-3 uppercase text-xs tracking-widest text-white border-b border-green-800 pb-2">Lok
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
